@@ -1,0 +1,118 @@
+@import "reset.css";
+@import "common.css";
+body {
+    font-family: 14px ,"PingFang-SC-Medium";
+    line-height: 1;
+    background-color: #02b2ff;
+    color: #fff;
+}
+
+#infoWrap {
+    position: relative;
+    .swipert-container {
+        position: relative;
+        min-height: 100vh;
+        margin-top: -45px;  
+        .swiper-wrapper {
+            .swiper-slide {
+                .city-weather {
+                    display: flex;
+                    justify-content: center;
+                    box-sizing: border-box;
+                }
+            }
+        }
+        .swiper-scrollbar{
+            overflow: hidden;
+            .swiper-scrollbar-drag{
+                background-color: #fff;
+                opacity: .7;
+            }
+        }
+        .city-weather-con {
+            width: 100%;
+            padding: 0 15px;    
+            margin-top: 105px;
+            .con-top {
+                line-height: 60px;
+                text-align: center;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                background-color: #fff;
+                .loc-icon {
+                    display: inline-block;
+                    width:21px;
+                    height: 21px;
+                    vertical-align: middle;
+                }
+                .city {
+                    display: inline-block;
+                    font-weight: normal;
+                    vertical-align: middle;
+                    font-size: 20px;
+                    color: #02b2ff;
+                }
+            }
+            .con-main {
+                overflow: hidden;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                padding: 0 16px;
+                background-color: rgba(255,255,255,0.2);
+                .main-top {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    margin: 25px 0;
+                    .left-icon {
+                        position: relative;
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 90px;
+                        box-sizing: content-box;
+                        margin-right: 20px;
+                        .icon-bg{
+                            position: absolute;
+                            width: 100%;
+                            padding-bottom: 100%;
+                            background-size: cover;
+                            background-position: 50%;
+                            background-color: transparent;
+                        }
+                    }
+                    .right-detail {
+                        display: inline-block;
+                        height: 90px;
+                        vertical-align: middle;
+                        padding-left: 20px;
+                        border-left: 1px dashed #fff;
+                        color: #fff;
+                        .tep{
+                            font-size: 35px;
+                        }
+                        .r-det-text{
+                            margin-top: 13px;
+                            font-size: 14px;
+                        }
+                        .r-det-num{
+                            margin-top: 7px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .main-list {
+                    .info-item {
+                        display: flex;
+                        justify-content:space-between;
+                        font-size: 14px;
+                        border-top: 1px dashed rgba(255,255,255,0.3);
+                        height: 40px;
+                        line-height: 40px;
+                        .left-tag {}
+                        .right-info {}
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+body{
+    height: 100vh;
+    background-image: url("../img/bg-1.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.meeting{
+    margin-top: 25px;
+}
+.meeting-name{
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #333333;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.meeting-time,.meeting-address{
+    text-align: center;
+    font-size: 15px;
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.meeting-time{
+    margin-top: 18px;
+}
+.name{
+    font-size: 18px;
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #333333;
+}
+.meeting-address{
+    margin-top: 5px;
+}
+.nav-container{
+    margin-top: 43px;
+    padding: 0 7px;
+}
+.nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav-item{
+    flex: 1;
+    flex-basis: 30%;
+    margin: 0 3px 5px;
+    background-color: #000000;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+.nav-item a{
+    display: block;
+    height: 100%;
+}
+.nav-item .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+}
+.item .icon{
+    margin-top: 2px;
+}
+.item .icon img{
+    width: 38px;
+    height: auto;
+}
+.item .title{
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
