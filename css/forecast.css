@@ -62,12 +62,15 @@ body{
 }
 .container .nav-hd{
     display: flex;
+    flex-wrap: wrap;
+    text-align: center;
 }
 .nav-hd .nav-hd-item{
-    flex: 1;
-    margin: 0 5px;
+    width: 47px;
+    margin: 5px;
+    margin-bottom: 0;
     padding: 11px 0;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1em;
     letter-spacing: 0;
     color: #fff;
