@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="info-right">
-                    <p class="time">今天 星期六 农历七月十五</p>
-                    <p class="fb-time">发布于17:00</p>
+                    <div class="time"></div>
+                    <p class="fb-time">发布于05:00</p>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="content">
             <div class="index-item">
                 <div class="item-icon">
-                    <img src="img/icon14.png" alt="">
+                    <img src="img/icon11.png" alt="">
                 </div>
                 <div class="item-title">
                     化妆指数
@@ -54,7 +54,7 @@
             </div>
             <div class="index-item ml" ml>
                 <div class="item-icon">
-                    <img src="img/icon11.png" alt="">
+                    <img src="img/icon12.png" alt="">
                 </div>
                 <div class="item-title">
                     感冒指数
@@ -66,46 +66,39 @@
             </div>
             <div class="index-item ml">
                 <div class="item-icon">
-                    <img src="img/icon10.png" alt="">
-                </div>
-                <div class="item-title">
-                    旅行指数
-                </div>
-                <div class="item-star">
-                </div>
-                <div class="item-advice">适宜</div>
-            </div>
-            <div class="index-item">
-                <div class="item-icon">
-                    <img src="img/icon12.png" alt="">
-                </div>
-                <div class="item-title">
-                    感冒指数
-                </div>
-                <div class="item-star">
-                    <!-- <img src="img/xingxing1.png" alt="">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml"> -->
-                </div>
-                <div class="item-advice">适宜</div>
-            </div>
-            <div class="index-item ml">
-                <div class="item-icon">
                     <img src="img/icon13.png" alt="">
                 </div>
                 <div class="item-title">
-                    出行指数
-                </div>
-                <div class="item-star">
-                    <!-- <img src="img/xingxing1.png" alt="">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml"> -->
+                    洗车指数
                 </div>
                 <div class="item-advice">适宜</div>
+                <div class="item-des">
+                    感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
+                </div>
+            </div>
+            <div class="index-item">
+                <div class="item-icon">
+                    <img src="img/icon14.png" alt="">
+                </div>
+                <div class="item-title">
+                    穿衣指数
+                </div>
+                <div class="item-advice">适宜</div>
+                <div class="item-des">
+                    感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
+                </div>
+            </div>
+            <div class="index-item ml">
+                <div class="item-icon">
+                    <img src="img/icon10.png" alt="">
+                </div>
+                <div class="item-title">
+                    紫外线指数
+                </div>
+                <div class="item-advice">适宜</div>
+                <div class="item-des">
+                    感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
+                </div>
             </div>
             <div class="index-item ml">
                 <div class="item-icon">
@@ -114,22 +107,21 @@
                 <div class="item-title">
                     运动指数
                 </div>
-                <div class="item-star">
-                    <!-- <img src="img/xingxing1.png" alt="">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing1.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml">
-                    <img src="img/xingxing2.png" alt="" class="ml"> -->
-                </div>
                 <div class="item-advice">适宜</div>
+                <div class="item-des">
+                    感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
+                </div>
             </div>
         </div>
     </div>
 </body>
 
-
+<script src="./js/nongli.js"></script>
+<script src="./js/render.js"></script>
+<script src="./js/index.js"></script>
 <script>
-
+    url = "./api/liveIndex.json"
+    getDate2(url, liveIndex)
 </script>
 
 </html>

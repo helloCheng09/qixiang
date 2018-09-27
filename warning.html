@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <title>短临预警</title>
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/warning.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
 </head>
+
 <body>
     <div class="page-hd">
         <div class="back">
@@ -38,7 +41,7 @@
                 </ul>
             </div>
             <!--预警信号-->
-            <div class="bd-item signal" >
+            <div class="bd-item signal">
                 <ul>
                     <li class="item"><a href="warning_signal_details.html"><img src="img/cheng1.png" alt="">高温橙色预警信号</a></li>
                     <li class="item"><a href="warning_signal_details.html"><img src="img/hong1.png" alt="">高温红色预警信号</a></li>
@@ -53,27 +56,27 @@
         </div>
     </div>
 
-    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="./js/render.js"></script>
+    <script src="./js/index.js"></script>
+
+
     <script>
         $(function () {
             //注册点击事件
             $(".tab-item").click(function () {
                 $(this).addClass("cur").siblings().removeClass("cur");
-                var idx=$(this).index();
+                var idx = $(this).index();
                 $(".bd-item").eq(idx).addClass("current").siblings().removeClass("current");
             })
-        });
-
-        $.ajax({
-            url: "http://aliv11.data.moji.com/whapi/json/alicityweather/alert",
-            type: 'POST',
-            data: "3b3d1bd69d824b41810b923ae9593155",
-            dataType: JSON,
-            success: function (state, data) {
-                console.log(state)
-                console.log(data)
-            }
         })
+
+        /*
+         * 调用函数
+         */
+        var url = "http://huangshanqixiang.aqwy.com.cn/index.php?g=Home&m=Weather&a=index&type=weather3"
+        // 获取天气预警
+        getDate(url, cityidArr[0], alertFn)
     </script>
 </body>
+
 </html>

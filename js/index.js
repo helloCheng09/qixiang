@@ -5,6 +5,8 @@
  */
 var root = window.forecast
 var renderWeek = new root.renderWeek
+var renderLive = new root.renderLive
+var showNongLi = root.showNongLi
 var cache = [] //缓存所有数据
 var cacheDif = []
 var cityidArr = [1587, 1589, 1588, 1590, 1591, 1585]
@@ -20,8 +22,9 @@ var realFeel
 var tips
 var windDir
 var windLevel
-
-
+// 生活指数
+var liveStatus = []
+var liveDesc = []
 /** 
  * 定义函数
  */
@@ -31,6 +34,16 @@ function getDate(url, cityid, fn, dateArr) {
         url: url + "&cityid=" + cityid + name,
         dataType: "jsonp",
         jsonp: "callback",
+        type: "GET",
+        success: fn,
+        error: error,
+    })
+}
+
+function getDate2(url, fn) {
+    $.ajax({
+        url: url,
+        dataType: "json",
         type: "GET",
         success: fn,
         error: error,
@@ -62,7 +75,6 @@ function fifteenDays(data) {
 }
 
 function error() {
-    // alert("error!")
     console.log("error!")
 }
 
@@ -106,4 +118,41 @@ function curTempDif(data) {
         renderWeek.renderTemDif(cacheDif)
     }
     // console.log(data)
+}
+
+function alertFn(data) {
+    console.log(data)
+}
+
+function liveIndex(data) {
+    var data = data["liveIndex"]
+    // 取得日期
+    var date 
+    $.each(data, function (index, item) {
+        date = index
+        for (var i = 0; i < item.length; i++) {
+            liveStatus.push(item[i].status)
+            liveDesc.push(item[i].desc)
+        }
+    })
+
+    liveStatus.splice(3,1)
+    liveDesc.splice(3,1)
+    liveStatus.splice(7,1)
+    liveDesc.splice(7,1)
+
+    var objLive = {
+        liveDesc: liveDesc,
+        liveStatus: liveStatus
+    }
+    var nongli = showNongLi(date)
+    var weekIndex = new Date(Date.parse(date)).getDay()
+    var objDate = {
+        nongli: nongli,
+        weekIndex: weekIndex
+    }
+
+    // 渲染农历
+    renderLive.curDate(objDate)
+    renderLive.render(objLive)
 }
