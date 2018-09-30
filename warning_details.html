@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <title>短临预警详情</title>
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/warning.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
 </head>
+
 <body>
     <div class="page-hd">
         <div class="back">
-            <a href="warning.html">
-                <img src="img/back.png" alt="">
+            <a href="warning.html?detail=1">
+                <img src="img/back.png" alt="返回">
             </a>
         </div>
         <span class="pg-title">短临预警详情</span>
@@ -19,22 +22,38 @@
     <div class="details-container">
         <div class="wrapper">
             <div class="details-title">
-                景德镇市最强暴雨如期而至
             </div>
             <div class="details-content">
-             <p>
-                 预计：受今年第八号台风“玛莉亚”影响，11日白天
-                 云系增多，晚上至12日白天，全市有一次阵雨或雷
-                 阵雨天气过程，局部中到大雨，风力逐渐加大到4
-                 ～5级。13日晴天多云，局部午后到傍晚有阵雨或雷
-                 阵雨。14～19日受副热带高压控制，晴天多云，局
-                 部午后到夜间有阵雨或雷阵雨。20日可能受热带系
-                 统外围环流影响，多云，部分有阵雨或雷阵雨。旬
-                 雨量: 10～40毫米;旬雨日: 3～4天;旬平均气温: 29
-                 ～31℃;旬极端最高气温: 36～38℃.
-             </p>
+                <!-- <p>
+                    预计：受今年第八号台风“玛莉亚”影响，11日白天
+                    云系增多，晚上至12日白天，全市有一次阵雨或雷
+                    阵雨天气过程，局部中到大雨，风力逐渐加大到4
+                    ～5级。13日晴天多云，局部午后到傍晚有阵雨或雷
+                    阵雨。14～19日受副热带高压控制，晴天多云，局
+                    部午后到夜间有阵雨或雷阵雨。20日可能受热带系
+                    统外围环流影响，多云，部分有阵雨或雷阵雨。旬
+                    雨量: 10～40毫米;旬雨日: 3～4天;旬平均气温: 29
+                    ～31℃;旬极端最高气温: 36～38℃.
+                </p> -->
+                <p></p>
             </div>
         </div>
     </div>
+
+
+    <script src="./js/render.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        /*
+         * 调用函数
+         */
+        var url = "http://huangshanqixiang.aqwy.com.cn/index.php?g=Home&m=Weather&a=index&type=weather3"
+        // var url = "../api/alert.json"
+        // 获取天气预警
+        getDate(url, cityidArr[0], alertDetail)
+        // getDate2(url, alertDetail)
+
+    </script>
 </body>
+
 </html>

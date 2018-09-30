@@ -6,12 +6,13 @@
     <title>短临预警详情</title>
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/warning.css" type="text/css">
+    <script src="js/jquery-1.12.4.min.js"></script>
 </head>
 <body>
     <div class="page-hd">
         <div class="back">
-            <a href="warning.html">
-                <img src="img/back.png" alt="">
+            <a href="warning.html?detail=2">
+                <img src="img/back.png" alt="返回"">
             </a>
         </div>
         <span class="pg-title">短临预警详情</span>
@@ -19,10 +20,10 @@
     <div class="details-container">
         <div class="wrapper">
             <div class="details-title warning-signal">
-                <img src="img/cheng1.png" alt="">景德镇市最强暴雨如期而至
+                <!-- <img src="./img/cheng1.jpg" alt="预警">景德镇市最强暴雨如期而至 -->
             </div>
             <div class="details-content">
-             <p>
+             <!-- <p>
                  景德镇市国土资源局、气象局发布地质灾害风险蓝色
                  预警：预计4月12日到13日受强盛的西南急流和切变
                  线影响，我市有一次暴雨过程，个别地方还可能出现
@@ -34,9 +35,25 @@
                  预警，及时将预警信息传递给受威胁对象；发现地质
                  灾害威胁，及时做好人员撤离工作；正在进行工程建
                  设的地段，应采取严格的防灾措施。
-             </p>
+             </p> -->
+             <p></p>
             </div>
         </div>
     </div>
+
+    
+    <script src="./js/render.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        /*
+         * 调用函数
+         */
+        var url = "http://huangshanqixiang.aqwy.com.cn/index.php?g=Home&m=Weather&a=index&type=weather3"
+        // var url = "../api/alert.json"
+        // 获取天气预警
+        getDate(url, cityidArr[0], alertSignalDet)
+        // getDate2(url, alertSignalDet)
+
+    </script>
 </body>
 </html>

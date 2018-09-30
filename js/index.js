@@ -6,9 +6,13 @@
 var root = window.forecast
 var renderWeek = new root.renderWeek
 var renderLive = new root.renderLive
+var renderAlert = root.renderAlert
+var renderAlertDet = root.renderAlertDet
+var renderSignalDet = root.renderSignalDet
 var showNongLi = root.showNongLi
 var cache = [] //缓存所有数据
 var cacheDif = []
+var alertData = []
 var cityidArr = [1587, 1589, 1588, 1590, 1591, 1585]
 var cityidArrDif = [1587, 1589, 1588, 1590, 1591, 1585]
 var maxTemp = []
@@ -25,9 +29,11 @@ var windLevel
 // 生活指数
 var liveStatus = []
 var liveDesc = []
+
 /** 
  * 定义函数
  */
+// ajax
 function getDate(url, cityid, fn, dateArr) {
     var name = "&name=ChengShaoBo"
     $.ajax({
@@ -50,6 +56,7 @@ function getDate2(url, fn) {
     })
 }
 
+// 未来一周天气
 function fifteenDays(data) {
     var forecastArr = data.info
     var weekNum = 1
@@ -89,8 +96,8 @@ function bindClick() {
     })
 }
 
+// 天气实况
 function curDay(data) {
-    var arr
     var data = data.info
     condition = data.condition
     realFeel = data.realFeel
@@ -98,7 +105,7 @@ function curDay(data) {
     windDir = data.windDir
     windLevel = data.windLevel
     cache.push([condition, realFeel, tips, windDir, windLevel])
-    arr = cityidArr.splice(0, 1)
+    cityidArr.splice(0, 1)
     if (cityidArr.length != 0) {
         getDate(url, cityidArr[0], curDay, dateArr)
     } else {
@@ -120,32 +127,94 @@ function curTempDif(data) {
     // console.log(data)
 }
 
+// 天气预警
 function alertFn(data) {
-    console.log(data)
+    alertData.push(data.info[0])
+    cityidArr.splice(0, 1)
+    if (cityidArr.length != 0) {
+        getDate(url, cityidArr[0], alertFn)
+    } else {
+        renderAlert(alertData)
+    }
 }
 
+function alertToggle() {
+    $(".tab-item").click(function () {
+        $(this).addClass("cur").siblings().removeClass("cur");
+        var idx = $(this).index();
+        $(".bd-item").eq(idx).addClass("current").siblings().removeClass("current");
+    })
+}
+
+function showTag() {
+    var detail = getQueryString("detail")
+    if (detail == 2) {
+        $(".tab-item").eq(0).removeClass("cur")
+        $(".tab-item").eq(1).addClass("cur")
+        $(".bd-item").eq(0).removeClass("current")
+        $(".bd-item").eq(1).addClass("current")
+    }
+}
+
+// 预警详情
+function alertDetail(data) {
+    alertData.push(data.info[0])
+    cityidArr.splice(0, 1)
+    if (cityidArr.length != 0) {
+        getDate(url, cityidArr[0], alertDetail)
+    } else {
+        var id = getQueryString("infoid")
+        renderAlertDet(alertData, id)
+    }
+}
+
+// 预警信号详情
+function alertSignalDet(data) {
+    alertData.push(data.info[0])
+    cityidArr.splice(0, 1)
+    if (cityidArr.length != 0) {
+        getDate(url, cityidArr[0], alertDetail)
+    } else {
+        var id = getQueryString("infoid")
+        renderSignalDet(alertData, id)
+    }
+}
+
+// 获取url参数
+function getQueryString(id) {
+    var reg = new RegExp("(^|&)" + id + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return r[2];
+    return '';
+}
+
+// 生活指数
 function liveIndex(data) {
-    var data = data["liveIndex"]
+
+    var data = data["info"]
+    console.log(data)
     // 取得日期
-    var date 
+    var date
     $.each(data, function (index, item) {
         date = index
-        for (var i = 0; i < item.length; i++) {
-            liveStatus.push(item[i].status)
-            liveDesc.push(item[i].desc)
-        }
+        liveStatus.push(item["status"])
+        liveDesc.push(item["desc"])
     })
 
-    liveStatus.splice(3,1)
-    liveDesc.splice(3,1)
-    liveStatus.splice(7,1)
-    liveDesc.splice(7,1)
+    liveStatus.splice(0, 2)
+    liveDesc.splice(0, 2)
+    liveStatus.splice(2, 2)
+    liveDesc.splice(2, 2)
+    liveStatus.splice(4, 1)
+    liveDesc.splice(4, 1)
 
     var objLive = {
         liveDesc: liveDesc,
         liveStatus: liveStatus
     }
-    var nongli = showNongLi(date)
+
+    console.log(objLive)
+    var nongli = showNongLi(date["day"])
     var weekIndex = new Date(Date.parse(date)).getDay()
     var objDate = {
         nongli: nongli,

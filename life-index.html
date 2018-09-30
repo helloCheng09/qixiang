@@ -52,6 +52,18 @@
                     建议用露质面霜打底，水质无油粉底霜，透明粉饼，粉质胭脂。
                 </div>
             </div>
+            <div class="index-item ml">
+                <div class="item-icon">
+                    <img src="img/icon15.png" alt="">
+                </div>
+                <div class="item-title">
+                    运动指数
+                </div>
+                <div class="item-advice">适宜</div>
+                <div class="item-des">
+                    感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
+                </div>
+            </div>
             <div class="index-item ml" ml>
                 <div class="item-icon">
                     <img src="img/icon12.png" alt="">
@@ -64,7 +76,7 @@
                     感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
                 </div>
             </div>
-            <div class="index-item ml">
+            <div class="index-item ">
                 <div class="item-icon">
                     <img src="img/icon13.png" alt="">
                 </div>
@@ -76,7 +88,7 @@
                     感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
                 </div>
             </div>
-            <div class="index-item">
+            <div class="index-item ml">
                 <div class="item-icon">
                     <img src="img/icon14.png" alt="">
                 </div>
@@ -100,7 +112,7 @@
                     感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
                 </div>
             </div>
-            <div class="index-item ml">
+            <!-- <div class="index-item ml">
                 <div class="item-icon">
                     <img src="img/icon15.png" alt="">
                 </div>
@@ -111,7 +123,7 @@
                 <div class="item-des">
                     感冒容易发生，少去人群密集的场所有利于降低感冒的几率。
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
@@ -120,8 +132,10 @@
 <script src="./js/render.js"></script>
 <script src="./js/index.js"></script>
 <script>
-    url = "./api/liveIndex.json"
-    getDate2(url, liveIndex)
+    // url = "./api/liveIndex.json"
+    var url = "http://huangshanqixiang.aqwy.com.cn/index.php?g=Home&m=Weather&a=index&type=weather4"
+    getDate(url, 1584, liveIndex)
+    // getDate2(url, liveIndex)
 </script>
 
 </html>
