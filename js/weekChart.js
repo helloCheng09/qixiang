@@ -2,12 +2,36 @@
   var myChart = echarts.init(document.getElementById("main"));
   //天气图json对象
   var weatherIcons = {
-      'Sunny': 'img/qingtian.png',
-      'Cloudy': 'img/duoyun.png',
-      'LightRain': 'img/xiaoyu.png',
-      'Showers': 'img/zhenyu.png',
-      'HeavyRain': 'img/dayu.png',
-      'Overcast': 'img/yintian.png',
+      'W0': 'img/W0.png',
+      'W1': 'img/W1.png',
+      'W2': 'img/W2.png',
+      'W3': 'img/W3.png',
+      'W4': 'img/W4.png',
+      'W5': 'img/W5.png',
+      'W6': 'img/W6.png',
+      'W7': 'img/W7.png',
+      'W8': 'img/W8.png',
+      'W9': 'img/W9.png',
+      'W10': 'img/W10.png',
+      'W13': 'img/W13.png',
+      'W14': 'img/W14.png',
+      'W15': 'img/W15.png',
+      'W16': 'img/W16.png',
+      'W17': 'img/W17.png',
+      'W18': 'img/W18.png',
+      'W19': 'img/W19.png',
+      'W20': 'img/W20.png',
+      'W29': 'img/W29.png',
+      'W30': 'img/W30.png',
+      'W31': 'img/W31.png',
+      'W32': 'img/W32.png',
+      'W33': 'img/W33.png',
+      'W34': 'img/W34.png',
+      'W35': 'img/W35.png',
+      'W36': 'img/W36.png',
+      'W44': 'img/W44.png',
+      'W45': 'img/W45.png',
+      'W46': 'img/W46.png',
   };
   //根据传入的data3数据判断相对应的图片，作为x轴刻度标签的背景图
   function setLine(data1, data2, data3, dateArr) {
@@ -43,26 +67,70 @@
       day_7 = dayTag[6]
 
       for (var i = 0; i < data3.length; i++) {
-          switch (data3[i]) {
-              case "晴":
-                  temp = weatherIcons.Sunny;
-                  break;
-              case "多云":
-                  temp = weatherIcons.Cloudy;
-                  break;
-              case "小雨":
-                  temp = weatherIcons.LightRain;
-                  break;
-              case "阵雨":
-                  temp = weatherIcons.Showers;
-                  break;
-              case "大雨":
-                  temp = weatherIcons.HeavyRain;
-                  break;
-              case "阴":
-                  temp = weatherIcons.Overcast;
-                  break;
-          }
+        var iconImg = data3[i]
+        if(iconImg == "晴" || iconImg == "大部分晴朗"){
+            temp = weatherIcons.W0;
+        }
+        if(iconImg == "多云" || iconImg == "少云"){
+            temp = weatherIcons.W1;
+        }
+        if(iconImg == "阴" ){
+            temp = weatherIcons.W2;
+        }
+        if(iconImg == "阵雨" || iconImg == "局部阵雨" || iconImg == "小阵雨" || iconImg == "强阵雨"){
+            temp = weatherIcons.W3;
+        }
+        if(iconImg == "阵雪" || iconImg == "小阵雪"){
+            temp = weatherIcons.W13;
+        }
+        if(iconImg == "雾" || iconImg == "冻雾"){
+            temp = weatherIcons.W18;
+        }
+        if(iconImg == "沙尘暴" || iconImg == "强沙尘暴"){
+            temp = weatherIcons.W20;
+        }
+        if(iconImg == "浮尘" || iconImg == "尘卷风" || iconImg == "扬沙"){
+            temp = weatherIcons.W29;
+        }
+        if(iconImg == "霾"){
+            temp = weatherIcons.W45;
+        }
+        if(iconImg == "雷阵雨" || iconImg == "雷电" || iconImg == "雷暴"){
+            temp = weatherIcons.W4;
+        }
+        if(iconImg == "雷阵雨伴有冰雹" || iconImg == "冰雹" || iconImg == "冰针" || iconImg == "冰粒"){
+            temp = weatherIcons.W5;
+        }
+        if(iconImg == "雨夹雪"){
+            temp = weatherIcons.W6;
+        }
+        if(iconImg == "小雨" || iconImg == "小到中雨"){
+            temp = weatherIcons.W7;
+        }
+        if(iconImg == "中雨" || iconImg == "雨"){
+            temp = weatherIcons.W8;
+        }
+        if(iconImg == "大雨" || iconImg == "中到大雨"){
+            temp = weatherIcons.W9;
+        }
+        if(iconImg == "暴雨" || iconImg == "大暴雨" || iconImg == "特大暴雨"  || iconImg == "大到暴雨"){
+            temp = weatherIcons.W10;
+        }
+        if(iconImg == "小雪"){
+            temp = weatherIcons.W14;
+        }
+        if(iconImg == "中雪" || iconImg == "雪" || iconImg == "小到中雪"){
+            temp = weatherIcons.W15;
+        }
+        if(iconImg == "大雪"){
+            temp = weatherIcons.W16;
+        }
+        if(iconImg == "暴雪"){
+            temp = weatherIcons.W17;
+        }
+        if(iconImg == "冻雨"){
+            temp = weatherIcons.W19;
+        }
           str.push(temp);
       }
       // 指定图表的配置项和数据

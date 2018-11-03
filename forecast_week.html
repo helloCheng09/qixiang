@@ -50,9 +50,10 @@
          * 调用函数 
          */
          var url = "http://huangshanqixiang.aqwy.com.cn/index.php?g=Home&m=Weather&a=index&type=weather2"
-        $.each(cityidArr, function (index, ele) {
-            getDate(url, ele, fifteenDays, dateArr)
-        })
+        // $.each(cityidArr, function (index, ele) {
+        //     getDate(url, ele, fifteenDays, dateArr)
+        // })
+        getDate(url, cityidArr[0], fifteenDays)
         bindClick()
     </script>
 </body>

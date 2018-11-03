@@ -5,6 +5,9 @@
         if (cache && index) {
             setLine(cache[index][0], cache[index][1], cache[index][2], dateArr)
         }
+        if (cache && index == 0) {
+            setLine(cache[index][0], cache[index][1], cache[index][2], dateArr)
+        }
     }
     // 生活指数
     function renderLive(data) {
@@ -211,6 +214,18 @@
             $(".swiper-slide").each(function () {
                 index = $(this).index()
                 $(this).find(".r-det-num").text(data[index][0] + "°C" + "~" + data[index][1] + "°C")
+            })
+        },
+        renderArround: function (data) {
+            var index
+            // console.log(data)
+            $(".swiper-slide").each(function () {
+                index = $(this).index()
+                $(this).find(".info-item:nth-of-type(1) .right-info").text(data[index][5])
+                $(this).find(".info-item:nth-of-type(2) .right-info").text(data[index][6])
+                $(this).find(".info-item:nth-of-type(3) .right-info").text(data[index][9] + "米")
+                $(this).find(".r-det-num").text(data[index][8] + "°C ~" + data[index][7] + "°C")
+                $(this).find(".city").text(data[index][10])
             })
         }
     }

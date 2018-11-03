@@ -15,11 +15,20 @@ var cacheDif = []
 var alertData = []
 var cityidArr = [1587, 1589, 1588, 1590, 1591, 1585]
 var cityidArrDif = [1587, 1589, 1588, 1590, 1591, 1585]
+var cityidAround = [1547, 1185, 1045, 1295, 1644, 1637, 39]
 var maxTemp = []
 var minTemp = []
 var conditionDay = []
 var dateArr = []
 var clickIndex
+
+// 周边天气实况
+var aroundCity
+var jing
+var wei
+var dayTemp
+var nightTemp
+var height
 // 实况天气
 var condition
 var realFeel
@@ -55,6 +64,40 @@ function getDate2(url, fn) {
         error: error,
     })
 }
+// 获取周边天气
+function getAroundData(url, fn) {
+    $.ajax({
+        url: url,
+        dataType: "json",
+        type: "GET",
+        success: fn,
+        error: error,
+    })
+}
+
+// 渲染周边天气
+function renderAround(data) {
+    var data = data["data"]
+    console.log(data)
+
+    data.forEach(function (item) {
+        condition = item.condition
+        realFeel = item.realFeel
+        tips = item.tips
+        windDir = item.windDir
+        windLevel = item.windLevel
+        jing = item.jing
+        wei = item.wei
+        dayTemp = item.tempDay
+        nightTemp = item.tempNight
+        height = item.height
+        aroundCity = item.name
+        cache.push([condition, realFeel, tips, windDir, windLevel, jing, wei, dayTemp, nightTemp, height, aroundCity])
+    })
+    renderWeek.renderCur(cache)
+    renderWeek.renderArround(cache)
+}
+
 
 // 未来一周天气
 function fifteenDays(data) {
@@ -79,6 +122,12 @@ function fifteenDays(data) {
     cache.push([maxTemp, minTemp, conditionDay])
     // 初始化 渲染屯溪
     renderWeek.init(cache[0][0], cache[0][1], cache[0][2])
+    arr = cityidArrDif.splice(0, 1)
+    if (cityidArrDif.length != 0) {
+        getDate(url, cityidArrDif[0], fifteenDays)
+    } else {
+        return false
+    }
 }
 
 function error() {
@@ -190,9 +239,7 @@ function getQueryString(id) {
 
 // 生活指数
 function liveIndex(data) {
-
     var data = data["info"]
-    console.log(data)
     // 取得日期
     var date
     $.each(data, function (index, item) {
@@ -215,7 +262,7 @@ function liveIndex(data) {
 
     console.log(objLive)
     var nongli = showNongLi(date["day"])
-    var weekIndex = new Date(Date.parse(date)).getDay()
+    var weekIndex = new Date().getDay();
     var objDate = {
         nongli: nongli,
         weekIndex: weekIndex
