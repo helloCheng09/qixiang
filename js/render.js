@@ -233,7 +233,7 @@
     renderLive.prototype.curDate = function (date) {
         var week = date["weekIndex"]
         switch (week) {
-            case 0:
+            case 1:
                 $(".info-right .time").text("今天 星期一 农历" + date["nongli"]["month"] + "月" + date["nongli"]["day"])
                 break
             case 2:
@@ -251,7 +251,7 @@
             case 6:
                 $(".info-right .time").text("今天 星期六 农历" + date["nongli"]["month"] + "月" + date["nongli"]["day"])
                 break
-            case 1:
+            case 7:
                 $(".info-right .time").text("今天 星期日 农历" + date["nongli"]["month"] + "月" + date["nongli"]["day"])
                 break
         }
